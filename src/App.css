@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +23,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
 
 .App-link {
   color: #61dafb;
@@ -36,3 +38,48 @@
     transform: rotate(360deg);
   }
 }
+
+.ListColumn {
+  display: flex;
+  flex-direction: column;
+  min-height: 1vh;
+}
+
+
+.InputSection {
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+}
+
+
+.TaskMemo{
+  white-space: pre-wrap;
+}
+
+.TaskMemo {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
+.TextArea {
+  resize: none;
+
+  height: 95px;
+  max-width: 960px;
+  width: 100%;
+  flex: left;
+}
+
+.PostButton {
+  width: 100px;
+  height: 100px;
+
+}
+
+.inputBox{
+  display: flex;
+}
+
