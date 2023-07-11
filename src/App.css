@@ -1,21 +1,21 @@
-.App {
+/*.App {
   text-align: center;
-}
+}*/
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
-  min-height: 20vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,11 +25,11 @@
 }
 
 
-
+/* 
 .App-link {
   color: #61dafb;
-}
-
+} */
+/* 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -37,20 +37,24 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-.ListColumn {
+/* .ListColumn {
   display: flex;
   flex-direction: column;
   min-height: 1vh;
+  justify-content: center;
 }
+ */
 
+ .TodoApp{
+  
+
+ }
 
 .InputSection {
-  position: fixed; 
-  bottom: 0; 
-  left: 0; 
-  width: 100%; 
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -68,18 +72,126 @@
   resize: none;
 
   height: 95px;
-  max-width: 960px;
+  /* max-width: 960px;
+  min-width: 550px; */
   width: 100%;
-  flex: left;
+  flex: center;
 }
 
 .PostButton {
   width: 100px;
   height: 100px;
+  min-width: 100px;
 
 }
 
 .inputBox{
   display: flex;
+  position: fixed; 
+  
+  bottom: 0; 
+  justify-content: center;
+  min-width: 360px;
+  width: 100%; 
+  max-width: 960px;
+  margin:  0 auto; 
 }
 
+.MemoGrid{
+  /* display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows:  auto; */
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-bottom: 120px;
+}
+
+
+.MemoTile {
+  
+  width: 300px;
+  height: 300px;
+  background-color: #d7f3fb;
+  margin: 20px;
+  padding: 15px;
+  border-radius :8px;
+}
+
+.TaskMemo {
+  height: 220px;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  margin: 20px 0px;
+}
+
+
+
+.overlay{
+  /*　画面全体を覆う設定　*/
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+  
+    /*　画面の中央に要素を表示させる設定　*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.ShowModal{
+  z-index: 99;
+  width: 80%;
+  height: 80%;
+  padding: 1em;
+  background: #fff;
+  max-width: 960px;
+}
+
+.CloseModal{
+  display: none;
+}
+
+.taskTop {
+  display: flex;
+  justify-content: space-between; 
+}
+
+#ListColumn {
+  height: 300px;
+}
+
+
+.ModalText {
+  resize: none;
+
+  height: 95px;
+  /* max-width: 960px;
+  min-width: 550px; */
+  width: 100%;
+  height: 95%;
+  flex: center;
+  max-width: 960px;
+
+}
+
+.CloseModalButton {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.TaskDetail {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}

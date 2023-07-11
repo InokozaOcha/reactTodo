@@ -14,6 +14,11 @@ const Input = (props) => {
             {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask}
           // {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newText}
         ]);
+
+        const scrollerInner = document.getElementById("ListColumn");
+        console.log(scrollerInner)
+        scrollerInner.scrollIntoView({block: "end", inline: "nearest"})
+        //scrollerInner.scrollIntoView(false);
     };
 
     const [newTask, setNewTask] = useState("");
@@ -23,7 +28,10 @@ const Input = (props) => {
  
     return (
         
+
+        
         <div className="inputBox App-body">
+            <div className="left"></div>
             <textarea className="TextArea"
 
                
@@ -33,6 +41,7 @@ const Input = (props) => {
             />
 
             <button className="PostButton" onClick={change}>Listにあたいをわたします</button>
+            <div className="right"></div>
        
 
 
