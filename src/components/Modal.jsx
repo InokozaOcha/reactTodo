@@ -15,11 +15,11 @@ const Modal = (props) => {
         
 
         if(data.length < 1) {
-            console.log("ffffffffffffffffffffffffff")
+           
             data = [
                 {id: "ないよ", time: 1 , task:"ざんねんでしたｗ"},
               ]
-              //setClassName("CloseModal")
+           
        
         } else {
            

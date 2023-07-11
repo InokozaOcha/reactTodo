@@ -11,9 +11,7 @@ function TodoApp() {
 
   const [task, setTask ] = useState('');
   const [list, setList] = useState([
-    {id: Math.random(), time: 1 , task:"aaaaaaaaaaaaaaaaaaa"},
-    {id: Math.random(),time: 2 , task:"bbbbbbbbbbbbbbbbbbb"},
-    {id: Math.random(),time: 3 , task:"ccccccccccccccccccc"},
+
   ]);
 
   const [className, setClassName] = useState('CloseModal');
@@ -43,12 +41,6 @@ function TodoApp() {
         <div className='InputSection'>
         <Input test = {test} setTest ={setTest} list = {list} setList = {setList}  />
         </div>
-        {/* <div className="overlay">
-          <div className="modal">
-          <p>これがモーダルウィンドウです。</p>
-          <p><button>close</button></p>
-          </div>
-        </div> */}
 
         <div >
 

@@ -12,13 +12,11 @@ const Input = (props) => {
         props.setList([
             ...props.list, 
             {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask}
-          // {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newText}
         ]);
 
-        const scrollerInner = document.getElementById("ListColumn");
-        console.log(scrollerInner)
-        scrollerInner.scrollIntoView({block: "end", inline: "nearest"})
-        //scrollerInner.scrollIntoView(false);
+        const goBottom = document.getElementById("ListColumn");
+        console.log(goBottom)
+        goBottom.scrollIntoView({block: "end", inline: "nearest"})
     };
 
     const [newTask, setNewTask] = useState("");
@@ -37,7 +35,7 @@ const Input = (props) => {
                
                 value={newTask}
                 onChange={(e => (setNewTask(e.target.value)))}
-                placeholder="タスクをにゅうりょくしてください入力"
+                placeholder="タスクを入力してください"
             />
 
             <button className="PostButton" onClick={change}>Listにあたいをわたします</button>
