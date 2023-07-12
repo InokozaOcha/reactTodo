@@ -1,13 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import Input from './Input';
 import List from './List';
 import DateyyyyMMdd from '../functions/originalFunctions' 
 import Modal from './Modal';
 
 
+
 function TodoApp() {
 
-
+  // const data = useContext;
+  // console.log(data.data)
 
   const [task, setTask ] = useState('');
   const [list, setList] = useState([
@@ -23,6 +25,7 @@ function TodoApp() {
 
   const refTask = useRef('');
 
+  const [taskState,setTaskState] = useState('');
 
 
     return (
@@ -31,7 +34,7 @@ function TodoApp() {
           <p>Todo アプリです</p>
         </header>
         <div className='ListColumn' >
-          <List list ={list}  setList = {setList} selecId = {selectId} setSelectId ={setSelectId} className = {className} setClassName ={setClassName} overlay = {overlay} setOverlay ={setOverlay} refTask={refTask}/>
+          <List list ={list}  setList = {setList} selecId = {selectId} setSelectId ={setSelectId} className = {className} setClassName ={setClassName} overlay = {overlay} setOverlay ={setOverlay} refTask={refTask} setTaskState = {setTaskState}/>
         </div>
        
         <div id='ListColumn' ></div>
@@ -44,7 +47,7 @@ function TodoApp() {
 
         <div >
 
-          <Modal selectId = {selectId} setSelectId ={setSelectId} list = {list} setList = {setList} className = {className} setClassName ={setClassName} overlay = {overlay} setOverlay ={setOverlay} refTask={refTask}/>
+          <Modal selectId = {selectId} setSelectId ={setSelectId} list = {list} setList = {setList} className = {className} setClassName ={setClassName} overlay = {overlay} setOverlay ={setOverlay} refTask={refTask} state={taskState} setTaskState={setTaskState}/>
         </div>
               
 

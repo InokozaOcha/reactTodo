@@ -2,15 +2,18 @@ import DateyyyyMMdd from '../functions/originalFunctions'
 import { v4 as uuidv4 } from 'uuid';
 import Modal from './Modal';
 import { useState } from 'react';
+import useTodoContext from '../hooks/useTodoContext';
 
 
 const  List =  (props) => {
 
-    const setSelectId = (id ,task) => {
+    const setSelectId = (id ,task, state) => {
         console.log(id);
         props.setSelectId(id);
         props.setClassName('ShowModal');
         props.setOverlay('overlay');
+        props.setTaskState(state)
+        console.log(state)
     }
 
     
@@ -39,7 +42,7 @@ const  List =  (props) => {
         {
             
             props.list.map((a) => (
-                <div className='MemoTile' key={Math.random()}>
+                <div className={`MemoTile ${a.state}`} key={Math.random()}>
                     <div className='taskTop'>
                         <div className='Time'>{a.time}</div>
                         <div onClick={() => deleteTask(a.id)}>×</div>
@@ -50,7 +53,7 @@ const  List =  (props) => {
                     <div className='TaskMemo'>{a.task}</div>
                     
                     <p> </p>
-                    <div className='TaskDetail' onClick={() => (setSelectId(a.id, a.task))}>～詳細～</div>
+                    <div className='TaskDetail' onClick={() => (setSelectId(a.id, a.task, a.state))}>～詳細～</div>
             
                 </div>
             ))

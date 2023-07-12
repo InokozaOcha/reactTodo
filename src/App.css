@@ -116,7 +116,7 @@
   
   width: 300px;
   height: 300px;
-  background-color: #d7f3fb;
+  /* background-color: #d7f3fb; */
   margin: 20px;
   padding: 15px;
   border-radius :8px;
@@ -174,20 +174,23 @@
 .ModalText {
   resize: none;
 
-  height: 95px;
+ 
   /* max-width: 960px;
   min-width: 550px; */
   width: 100%;
-  height: 95%;
+  height: 80%;
   flex: center;
   max-width: 960px;
 
 }
 
 .CloseModalButton {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+  height: 10%;
+  border-radius: 8px;
+  background-color: #cdcdcd;
 }
 
 .TaskDetail {
@@ -195,3 +198,36 @@
   margin: 0 auto;
   text-align: center;
 }
+
+
+
+.StateBox{
+
+  display: flex;
+  height: 10%;
+}
+
+.StateContents{
+  width: 100%;
+  text-align: center;
+}
+
+.NotReady{
+ background-color: rgb(255, 218, 218);
+ 
+
+}
+
+.Ready{
+  background-color: rgb(254, 255, 196);
+}
+
+.Doing{
+  background-color:rgb(184, 216, 255)
+}
+
+.Done{
+  background-color: rgb(212, 243, 212);
+}
+
+
