@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DateyyyyMMdd from '../functions/originalFunctions' 
 import List from "./List";
+import TaskState from "../functions/TaskState"; 
 
 const Modal = (props) => {
 
@@ -30,7 +31,7 @@ const Modal = (props) => {
 
         return(
             <div className= {props.overlay}>
-                <div className={props.className}>
+                <div className={`${props.className} ${props.state}`}>
                     <textarea className="ModalText"
                     //value={""}
                     value={data[0].task}
@@ -40,6 +41,30 @@ const Modal = (props) => {
                         ))}
                     // onChange={(e => (setNewTask(e.target.value)))}
                 ></textarea>
+                <div className={`StateBox`}>
+                    <div 
+                        className="NotReady StateContents"
+                        onClick={() => {TaskState(props.selectId,"NotReady",props.list,props.setList)
+                            props.setTaskState("NotReady")
+                        }}
+                    >やらない</div>    
+                    <div 
+                        className="Ready StateContents"
+                        onClick={() => {TaskState(props.selectId,"Ready",props.list,props.setList)
+                        props.setTaskState("Ready")}}
+                    >やる予定</div>
+                    <div 
+                        className="Doing StateContents"
+                        onClick={() => {TaskState(props.selectId,"Doing",props.list,props.setList)
+                        props.setTaskState("Doing")}}
+                    >着手中</div>
+                    <div 
+                        className="Done StateContents"
+                        onClick={() => {TaskState(props.selectId,"Done",props.list,props.setList)
+                        props.setTaskState("Done")}}
+                    >完了</div>
+
+                </div>
             
                     
                     <div className="CloseModalButton" onClick={() => (CloseModal())}>閉じる</div>
@@ -55,7 +80,7 @@ const Modal = (props) => {
         console.log(id)
         let newList = props.list.map(a =>{ 
             if(a.id === id) {
-                return {id: a.id , time: a.time , task: task}
+                return {id: a.id , time: a.time , task: task, state: a.state}
             } else {
                 return a
             }

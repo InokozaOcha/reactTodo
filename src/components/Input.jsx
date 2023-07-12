@@ -11,7 +11,7 @@ const Input = (props) => {
 
         props.setList([
             ...props.list, 
-            {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask}
+            {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask, state:"Ready"}
         ]);
 
         const goBottom = document.getElementById("ListColumn");
