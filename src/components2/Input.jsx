@@ -3,42 +3,38 @@ import DateyyyyMMdd from '../functions/originalFunctions'
 import { TodoContext } from "./TodoApp";
 import { useAa } from '../hooks/useTodoContext2';
 
+//追加ボタンを押した際に実行
 const Input = (props) => {
 
+    // 同じことやってるはずなんだけど、useAaがうまくいかない…
+    // useAaができるなら、useContextも不要になるはず
     const {list, setList,test} = useContext(TodoContext);
     const {test2, setTaskState} = useAa;
-    console.log(test)
-    console.log(test2)
+    console.log(test) //aaaaaa
+    console.log(test2) //undefined
+
+
+    const [newTask, setNewTask] = useState("");
 
 
     const change = () => {
-        props.setTest("くりっく！");
+     
         
         let newTaskNL = newTask.split('\n');
         let newText = newTaskNL.join('<br>');
 
-        // props.setList([
-        //     ...props.list, 
-        //     {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask, state:"Ready"}
-        // ]);
-
-       // console.log(props.aaa.test1)
         setList([
             ...list, 
             {id: Math.random(),time: DateyyyyMMdd(Date()) , task:newTask, state:"Ready"}
         ]);
 
-        console.log(list)
-
-
-      //  console.log(props.aaa)
-
+        //リストに追加したら、最下部まで移動
+        setNewTask("")
         const goBottom = document.getElementById("ListColumn");
-       // console.log(goBottom)
         goBottom.scrollIntoView({block: "end", inline: "nearest"})
     };
 
-    const [newTask, setNewTask] = useState("");
+    
 
 
 
@@ -53,7 +49,12 @@ const Input = (props) => {
 
                
                 value={newTask}
-                onChange={(e => (setNewTask(e.target.value)))}
+                onChange={ (e) => { 
+                    setNewTask(e.target.value);
+                }
+                  
+                    
+                }
                 placeholder="タスクを入力してください"
             />
 
@@ -61,8 +62,6 @@ const Input = (props) => {
             <div className="right"></div>
        
 
-
-       {/*<button onClick={props.setTest('うけとったどぇ＾')}>Listにあたいをわたします</button> */}  
       
         
         </div>

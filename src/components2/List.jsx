@@ -1,6 +1,3 @@
-import DateyyyyMMdd from '../functions/originalFunctions' 
-import { v4 as uuidv4 } from 'uuid';
-import Modal from './Modal';
 import { useContext, useState } from 'react';
 import useTodoContext from '../hooks/useTodoContext';
 import { TodoContext } from './TodoApp';
@@ -12,14 +9,10 @@ const  List =  (props) => {
     const {list2} = useAa();
     const {list,setList,setSelectId,setClassName,setOverlay,setTaskState} = useContext(TodoContext);
     //const {list} = TodoContext;
-    const setSelectIdFunc = (id ,task, state) => {
-        console.log(id);
-        props.setSelectId(id);
-        props.setClassName('ShowModal');
-        props.setOverlay('overlay');
-        props.setTaskState(state)
-        console.log(state)
 
+    // CCSを書き換えて、モーダルを表示
+    //クリックと同時に画面を生成する方がかっこいいかも
+    const setSelectIdFunc = (id ,task, state) => {
         //書き換え　
         setSelectId(id);
         setClassName('ShowModal');
@@ -36,23 +29,10 @@ const  List =  (props) => {
 
 
     const deleteTask = (id) => {
-        console.log(id)
-        const newlist = props.list.filter((task) => task.id !== id);
-        const newlist2 = list.filter((task) => task.id !== id);
-        
-     
-        console.log(props.list)
-        console.log(newlist)
-
-        props.setList([
-         ...newlist
-        ]);
-
+        const newlist = list.filter((task) => task.id !== id);
         setList([
-            ...newlist2
+            ...newlist
         ])
-        
-
     }
 
 
@@ -62,7 +42,7 @@ const  List =  (props) => {
         <div className='MemoGrid'>
         {
             
-            // props.list.map((a) => (
+           
             list.map((a) => (
 
                 <div className={`MemoTile ${a.state}`} key={Math.random()}>
@@ -70,9 +50,7 @@ const  List =  (props) => {
                         <div className='Time'>{a.time}</div>
                         <div onClick={() => deleteTask(a.id)}>×</div>
                     </div>
-                    
-                    
-                    
+
                     <div className='TaskMemo'>{a.task}</div>
                     
                     <p> </p>
@@ -81,11 +59,6 @@ const  List =  (props) => {
                 </div>
             ))
         }
-
-
-
-
-
 
     </div>
     );

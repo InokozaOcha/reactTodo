@@ -1,7 +1,6 @@
-import { useState, useRef, useContext,createContext } from 'react';
+import {createContext } from 'react';
 import Input from './Input';
 import List from './List';
-import DateyyyyMMdd from '../functions/originalFunctions' 
 import Modal from './Modal';
 import {useTodoContext} from '../hooks/useTodoContext';
 import { TodoContext2, useTodoContext2 } from '../hooks/useTodoContext2';
@@ -20,23 +19,18 @@ function TodoApp() {
       <div className="TodoApp">
         <header className="App-header">
           <p>Todo アプリです</p>
-    
         </header>
         <div className='ListColumn' >
           <List/>
         </div>
        
         <div id='ListColumn' ></div>
-        
-
        
         <div className='InputSection'>
-        <Input />
+          <Input />
         </div>
 
-
         <div >
-
           <Modal/>
         </div>
               

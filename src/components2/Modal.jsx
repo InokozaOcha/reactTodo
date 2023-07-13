@@ -1,25 +1,21 @@
-import React, { useState, useContext } from "react";
-import DateyyyyMMdd from '../functions/originalFunctions' 
-import List from "./List";
+import React, { useContext } from "react";
 import TaskState from "../functions/TaskState"; 
 import { TodoContext } from "./TodoApp";
 
-const Modal = (props) => {
-    const {test, setTest ,list,overlay,className,taskState,selectId,setTaskState,setList,setClassName,setOverlay} = useContext(TodoContext);
+const Modal = () => {
+    const {setTest ,list,overlay,className,taskState,selectId,setTaskState,setList,setClassName,setOverlay} = useContext(TodoContext);
 
+    //詳細画面
     const Detail = (id) => {
-
-        console.log(id)
-            let data = list.filter((task) => task.id === id);
-
-      
-        
+       
+        let data = list.filter((task) => task.id === id);
 
         if(data.length < 1) {
            
+            //idと一致しないときは、ざんねんでしたｗと表示
             data = [
                 {id: "ないよ", time: 1 , task:"ざんねんでしたｗ"},
-              ]
+            ]
            
        
         } else {
@@ -33,11 +29,10 @@ const Modal = (props) => {
             <div className= {overlay}>
                 <div className={`${className} ${taskState}`}>
                     <textarea className="ModalText"
-                    //value={""}
-                    value={data[0].task}
-                    onChange={(e => (
-                        // console.log(e.target.value)
-                        TaskChange(e.target.value,selectId)
+                        value={data[0].task}
+                        onChange={(e => (
+                            //変更があったらTaskChangで変更
+                            TaskChange(e.target.value,selectId)
                         ))}
                     // onChange={(e => (setNewTask(e.target.value)))}
                 ></textarea>
@@ -75,9 +70,8 @@ const Modal = (props) => {
     
     }  
 
+    //タスクの変更機能（状態変更関数：TaskStateみたいに外部に出すと動かない？）
     const TaskChange = (task , id) => {
-       // console.log(task)
-        console.log(id)
         let newList = list.map(a =>{ 
             if(a.id === id) {
                 return {id: a.id , time: a.time , task: task, state: a.state}
@@ -87,27 +81,17 @@ const Modal = (props) => {
         })
 
         setList(newList)
-
-       //const newList = props.list.map( id === id ? {id: id , time: time , task: task} :task)
-
-        // props.setList((list) =>
-        //     list.map((task) => (task.id === id ? { id: id, name: task } : task))
-        // );
-        console.log(newList)
     }
 
+    //CSSを変更して、モーダルを消す
     const CloseModal = () => {
         setClassName("CloseModal");
         setOverlay('');
-        console.log(className)
-        setTest("変更したよー")
     }
 
     return(
         <div className={className}>
-            
             {Detail(selectId)}
-           
         </div>
     )
 }
