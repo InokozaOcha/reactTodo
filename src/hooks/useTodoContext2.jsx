@@ -1,7 +1,9 @@
 import React, {createContext, useContext, useState} from 'react'
 
+const TodoContext2 = createContext();
 
-export const useTodoContext = () => {
+
+const useTodoContext2 = () => {
 
 
 
@@ -10,7 +12,7 @@ export const useTodoContext = () => {
     const [className, setClassName] = useState('CloseModal');
     const [overlay, setOverlay] = useState('');
   
-    const [test, setTest] = useState('aaaaaaaaaaaa');
+    const [test2, setTest2] = useState('bbbbbbbbbbbbbbbbbbbb');
   
     const [selectId, setSelectId] = useState('初期表示');
   
@@ -22,7 +24,7 @@ export const useTodoContext = () => {
     const todoValue = {
         className, setClassName,
         overlay, setOverlay,
-        test, setTest,
+        test2, setTest2,
         selectId, setSelectId,
         taskState,setTaskState,
         list,setList
@@ -31,12 +33,15 @@ export const useTodoContext = () => {
     const obj = useContext(todoValue)
 
 
-
+    
 
     return todoValue;
 
 }
 
+const useAa = () => {
+    const aaa = TodoContext2
+    return useContext(aaa)
+}
 
-
-export default useTodoContext;
+export {useTodoContext2 ,TodoContext2,useAa};

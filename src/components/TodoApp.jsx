@@ -1,17 +1,21 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext,createContext } from 'react';
 import Input from './Input';
 import List from './List';
 import DateyyyyMMdd from '../functions/originalFunctions' 
 import Modal from './Modal';
+import {useTodoContext} from '../hooks/useTodoContext';
+import { TodoContext2, useTodoContext2 } from '../hooks/useTodoContext2';
 
+export const  TodoContext = createContext();
 
+const todoContextAAA = TodoContext2;
 
 function TodoApp() {
 
   // const data = useContext;
   // console.log(data.data)
+ 
 
-  const [task, setTask ] = useState('');
   const [list, setList] = useState([
 
   ]);
@@ -27,11 +31,29 @@ function TodoApp() {
 
   const [taskState,setTaskState] = useState('');
 
+  const aaa = useTodoContext();
+  const bbb = useTodoContext2();
+
+
+
+
+  console.log("Adesu")
+   console.log(aaa)
+  // aaa.setTest1("変更したよ")
+  console.log("Bdesu")
+   console.log(bbb)
 
     return (
+      <todoContextAAA.Provider value ={bbb}>
+      <TodoContext.Provider value={aaa}>
       <div className="TodoApp">
         <header className="App-header">
           <p>Todo アプリです</p>
+          
+        <div>てすとらん:{aaa.test}:{bbb.test2}
+        
+        
+        </div>
         </header>
         <div className='ListColumn' >
           <List list ={list}  setList = {setList} selecId = {selectId} setSelectId ={setSelectId} className = {className} setClassName ={setClassName} overlay = {overlay} setOverlay ={setOverlay} refTask={refTask} setTaskState = {setTaskState}/>
@@ -42,8 +64,9 @@ function TodoApp() {
 
        
         <div className='InputSection'>
-        <Input test = {test} setTest ={setTest} list = {list} setList = {setList}  />
+        <Input test = {test} setTest ={setTest} list = {list} setList = {setList} aaa = {aaa}  />
         </div>
+
 
         <div >
 
@@ -52,6 +75,8 @@ function TodoApp() {
               
 
       </div>
+      </TodoContext.Provider>
+      </todoContextAAA.Provider>
      
     );
 }
